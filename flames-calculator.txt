@@ -1,0 +1,93 @@
+#include<stdio.h>
+#include<string.h>
+char a[100],b[100];
+char f[]={'f','l','a','m','e','s'};
+void space()
+{
+    for(int i=0;i<strlen(a);i++){
+        if(a[i]==' '){
+            for(int j=i;j<strlen(a);i++){
+                a[j]=a[j+1];
+            }
+        }
+    }
+    for(int i=0;i<strlen(b);i++){
+        if(b[i]==' '){
+            for(int j=i;j<strlen(b);i++){
+                b[j]=b[j+1];
+            }
+        }
+    }
+}
+void common()
+{
+    for(int i=0;i<strlen(a);i++){
+        for(int j=0;j<strlen(b);j++){
+            if(a[i]==b[j]){
+                for(int x=i;x<strlen(a);x++){
+                    a[x]=a[x+1];
+                }
+                for(int y=j;y<strlen(b);y++){
+                    b[y]=b[y+1];
+                }
+                j--;
+                i--;
+                break;
+            }
+        }
+    }
+}
+int main()
+{
+   printf("Enter the inputs in Capital Alphabets only!!!...\n");
+   printf("Enter the person 1 name : ");
+   gets(a);
+   printf("\nEnter the person 2 name : ");
+   gets(b);
+   printf("\nResult is :\n");
+   space();
+   common();
+   int len=strlen(a)+strlen(b);
+   if(len==0){
+       printf("Enter the diiferent names");
+   }
+   else{
+       int i=0;
+       int c=0;
+       while(strlen(f)!=1){
+           if(i==strlen(f)){
+               i=i%strlen(f);
+           }
+           c++;
+           if(c==len){
+               for(int j=i;j<strlen(f);j++){
+                   f[j]=f[j+1];
+               }
+               c=0;
+               i--;
+           }
+           i++;
+       }
+       switch(f[0]){
+            case 'f':
+                printf("Friend");
+                break;
+            case 'l':
+                printf("Lover");
+                break;
+            case 'a':
+                printf("Affection");
+                break;
+            case 'm':
+                printf("Marrage");
+                break;
+            case 'e':
+                printf("Enemy");
+                break;
+            case 's':
+                printf("Sister");
+                break;
+       }
+   }
+   return 0;
+}
